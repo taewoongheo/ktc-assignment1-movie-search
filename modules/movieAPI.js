@@ -1,6 +1,6 @@
 import { API_KEY } from "../auth.js";
 
-export function getMovieInfo() {
+export async function getMovieInfo() {
   const url = `https://api.themoviedb.org/3/movie/now_playing?&language=ko-KR&region=KR&api_key=${API_KEY}`;
 
   const options = {
@@ -10,8 +10,9 @@ export function getMovieInfo() {
     },
   };
 
-  fetch(url, options)
-    .then((res) => res.json())
-    .then((json) => console.log(json))
-    .catch((err) => console.error(err));
+  try {
+    return (await fetch(url, options)).json();
+  } catch (err) {
+    console.error(err);
+  }
 }
