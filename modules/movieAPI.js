@@ -1,6 +1,6 @@
 import { API_KEY } from "../auth.js";
 
-export async function getMovieInfo() {
+export async function getMovieData() {
   const url = `https://api.themoviedb.org/3/movie/now_playing?&language=ko-KR&region=KR&api_key=${API_KEY}`;
 
   const options = {
