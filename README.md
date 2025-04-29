@@ -1,12 +1,12 @@
 # Movie Search
 
-TMDB API를 활용하여 제작한 영화검색 웹 사이트입니다.
+TMDB API를 활용한 영화검색 웹 사이트입니다.
 
 ## 기술 스택
 
 - HTML5
 - CSS
-- JavaScript (Vanilla JS)
+- JavaScript
 
 ## 필수기능
 
