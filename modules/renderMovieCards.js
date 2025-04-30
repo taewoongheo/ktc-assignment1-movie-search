@@ -1,7 +1,7 @@
 import { getMovieData } from "./movieAPI.js";
 
 export async function renderMovieCards() {
-  const $movieListSection = document.querySelector(".movie-list-section");
+  const $movieListSection = document.querySelector("#movie-list-section");
 
   try {
     const data = await getMovieData();

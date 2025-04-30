@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>영화 검색 사이트</title>
+    <title>영화 검색</title>
     <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="main.js" type="module" defer></script>
   </head>
   <body>
-    <header>
-      <h1>영화 검색 사이트</h1>
+    <header class="title-container">
+      <h1 class="title">🍿 영화 검색 사이트</h1>
     </header>
-    <main>
+    <main class="content-container">
       <section class="search-section">
         <form id="search-form">
           <input
@@ -23,10 +24,7 @@
         </form>
       </section>
 
-      <section class="movie-list-section">
-        <article class="movie-card">영화 정보 카드1</article>
-        <article class="movie-card">영화 정보 카드2</article>
-      </section>
+      <section id="movie-list-section"></section>
     </main>
   </body>
 </html>
