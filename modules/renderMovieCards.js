@@ -32,10 +32,12 @@ function createMovieCardElement(img, title, desc, rating) {
   descElem.textContent = desc;
   descElem.classList.add("movie-overview");
 
-  const ratingElem = document.createElement("p");
-  ratingElem.textContent = `${rating.toFixed(1)}/10`;
+  const ratingDiv = document.createElement("div");
+  const ratingElem = document.createElement("span");
+  ratingElem.textContent = `⭐${rating.toFixed(1)}`;
   ratingElem.classList.add("movie-rating");
+  ratingDiv.append(ratingElem);
 
-  card.append(posterElem, titleElem, descElem, ratingElem);
+  card.append(posterElem, titleElem, descElem, ratingDiv);
   return card;
 }
