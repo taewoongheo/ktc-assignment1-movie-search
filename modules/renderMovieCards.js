@@ -6,12 +6,9 @@ export async function renderMovieCards() {
   try {
     const data = await getMovieData();
     for (const movie of data.results) {
-      const img = movie.poster_path;
-      const title = movie.title;
-      const desc = movie.overview;
-      const rating = movie.vote_average;
+      const { poster_path, title, overview, vote_average } = movie;
       $movieListSection.appendChild(
-        createMovieCardElement(img, title, desc, rating)
+        createMovieCardElement(poster_path, title, overview, vote_average)
       );
     }
   } catch (err) {
@@ -36,7 +33,7 @@ function createMovieCardElement(img, title, desc, rating) {
   descElem.classList.add("movie-overview");
 
   const ratingElem = document.createElement("p");
-  ratingElem.textContent = `${rating.toFixed(1)} / 10`;
+  ratingElem.textContent = `${rating.toFixed(1)}/10`;
   ratingElem.classList.add("movie-rating");
 
   card.append(posterElem, titleElem, descElem, ratingElem);
