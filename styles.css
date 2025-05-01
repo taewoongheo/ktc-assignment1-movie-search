@@ -3,8 +3,6 @@ html {
 }
 
 body {
-  width: 100%;
-  height: 100%;
   padding: 7em 15em;
 }
 
@@ -80,4 +78,35 @@ body {
   background-color: rgb(216, 216, 216);
   padding: 0.1em 0.3em;
   border-radius: 0.3em;
+}
+
+/* modal */
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(34, 34, 34, 0.409);
+}
+
+.modal {
+  position: absolute;
+
+  left: calc(100vw / 2 - 300px);
+  top: calc(100vh / 2 - 250px);
+  width: 600px;
+  height: 500px;
+
+  background-color: white;
+
+  display: flex;
+}
+
+.hidden {
+  display: none;
 }
