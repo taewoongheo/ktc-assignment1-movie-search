@@ -75,36 +75,54 @@ function createMovieCardElement(img, title, desc, rating, id) {
         vote_average,
       } = json;
 
-      const modalTitleElem = document.createElement("h1");
-      modalTitleElem.textContent = title;
-
-      const modalGenresElem = document.createElement("p");
-      modalGenresElem.textContent = genres.map((el) => el.name).join(", ");
-
-      const modalOverviewElem = document.createElement("p");
-      modalOverviewElem.textContent = overview;
+      const modalInfoContainer = document.createElement("div");
+      modalInfoContainer.classList.add("modal-info-container");
 
       const modalPosterElem = document.createElement("img");
       modalPosterElem.src = `https://image.tmdb.org/t/p/w154${poster_path}`;
+      modalPosterElem.classList.add("modal-poster");
+
+      const modalDetailsElem = document.createElement("div");
+      modalDetailsElem.classList.add("modal-details-container");
+
+      const modalGenresElem = document.createElement("p");
+      modalGenresElem.textContent = genres.map((el) => el.name).join(", ");
+      modalGenresElem.classList.add("modal-genres");
 
       const modalReleaseElem = document.createElement("p");
-      modalReleaseElem.textContent = release_date;
+      modalReleaseElem.textContent = `개봉일: ${release_date}`;
+      modalReleaseElem.classList.add("modal-release");
 
       const modalRuntimeElem = document.createElement("p");
-      modalRuntimeElem.textContent = runtime;
+      modalRuntimeElem.textContent = `상영시간: ${runtime} min`;
+      modalRuntimeElem.classList.add("modal-runtime");
 
       const modalRatingElem = document.createElement("p");
-      modalRatingElem.textContent = vote_average;
+      modalRatingElem.textContent = `평점: ⭐${vote_average.toFixed(1)}`;
+      modalRatingElem.classList.add("modal-rating");
 
-      modal.append(
-        modalTitleElem,
+      modalDetailsElem.append(
+        modalRatingElem,
         modalGenresElem,
-        modalOverviewElem,
-        modalPosterElem,
-        modalReleaseElem,
         modalRuntimeElem,
-        modalRatingElem
+        modalReleaseElem
       );
+      modalInfoContainer.append(modalPosterElem, modalDetailsElem);
+
+      const modalTextContainer = document.createElement("div");
+      modalTextContainer.classList.add("modal-text-container");
+
+      const modalTitleElem = document.createElement("h1");
+      modalTitleElem.textContent = title;
+      modalTitleElem.classList.add("modal-title");
+
+      const modalOverviewElem = document.createElement("p");
+      modalOverviewElem.textContent = overview;
+      modalOverviewElem.classList.add("modal-overview");
+
+      modalTextContainer.append(modalTitleElem, modalOverviewElem);
+
+      modal.append(modalInfoContainer, modalTextContainer);
     } catch (err) {
       console.error(err);
     }

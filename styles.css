@@ -81,6 +81,10 @@ body {
 }
 
 /* modal */
+.hidden {
+  display: none;
+}
+
 .modalContainer {
   position: fixed;
   top: 0;
@@ -97,16 +101,50 @@ body {
 .modal {
   position: absolute;
 
-  left: calc(100vw / 2 - 300px);
-  top: calc(100vh / 2 - 250px);
-  width: 600px;
-  height: 500px;
+  left: calc(100vw / 2 - 350px);
+  top: calc(100vh / 2 - 300px);
+  width: 700px;
+  height: 600px;
 
   background-color: white;
 
   display: flex;
+  padding: 2em;
+  border-radius: 0.5em;
 }
 
-.hidden {
-  display: none;
+.modal-info-container {
+  flex: 0.4;
+  padding: 0.5em;
+}
+
+.modal-poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 0.25em;
+}
+
+.modal-text-container {
+  flex: 0.6;
+  padding: 0.5em;
+  overflow: scroll;
+}
+
+.modal-genres,
+.modal-release,
+.modal-runtime,
+.modal-rating {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0.5em;
+}
+
+.modal-title {
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+}
+.modal-overview {
+  font-size: 1em;
+  line-height: 1.5em;
 }
