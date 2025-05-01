@@ -1,3 +1,4 @@
-import { renderMovieCards } from "./modules/renderMovieCards.js";
+import { renderMovieCards } from "./modules/movieCards.js";
 
-await renderMovieCards();
+const $movieListSection = document.querySelector("#movie-list-section");
+await renderMovieCards($movieListSection);
