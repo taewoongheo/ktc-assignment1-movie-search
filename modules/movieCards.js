@@ -1,18 +1,13 @@
 import { createContainer, createImgElement, createTextElement } from "./dom.js";
-import { getAllMovieData } from "./movieAPI.js";
 import { showMovieModal } from "./modal.js";
 
-export async function renderMovieCards($container) {
-  try {
-    const data = await getAllMovieData();
-    for (const movie of data.results) {
-      const { id, poster_path, title, overview, vote_average } = movie;
-      $container.appendChild(
-        createMovieCardElement(poster_path, title, overview, vote_average, id)
-      );
-    }
-  } catch (err) {
-    console.error(err);
+export function renderMovieCards($container, movies) {
+  $container.innerHTML = "";
+  for (const movie of movies) {
+    const { id, poster_path, title, overview, vote_average } = movie;
+    $container.append(
+      createMovieCardElement(poster_path, title, overview, vote_average, id)
+    );
   }
 }
 
