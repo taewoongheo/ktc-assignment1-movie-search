@@ -7,7 +7,7 @@ import { showMovieModal } from "../modal/modal.js";
 
 export function renderMovieCards($container, movies) {
   $container.innerHTML = "";
-  for (const movie of movies) {
+  for (const movie of movies.values()) {
     const { id, poster_path, title, overview, vote_average } = movie;
     $container.append(
       createMovieCardElement(poster_path, title, overview, vote_average, id)
@@ -17,6 +17,7 @@ export function renderMovieCards($container, movies) {
 
 function createMovieCardElement(img, title, desc, rating, id) {
   const card = createContainer("article", "movie-card");
+  card.dataset.id = id;
 
   const posterElem = createImgElement(
     `https://image.tmdb.org/t/p/w500${img}`,
@@ -40,18 +41,18 @@ function createMovieCardElement(img, title, desc, rating, id) {
 
   card.append(posterElem, titleElem, descElem, ratingDiv);
 
-  card.addEventListener("click", () => showMovieModal(id));
-  likeElem.addEventListener("click", (e) => {
-    const likeStatus = e.target.innerHTML;
-    if (likeStatus === "♡") {
-      e.target.innerHTML = "❤️";
-      localStorage.setItem(id, id);
-    } else {
-      e.target.innerHTML = "♡";
-      localStorage.removeItem(id);
-    }
-    e.stopPropagation();
-  });
+  // card.addEventListener("click", () => showMovieModal(id));
+  // likeElem.addEventListener("click", (e) => {
+  //   const likeStatus = e.target.innerHTML;
+  //   if (likeStatus === "♡") {
+  //     e.target.innerHTML = "❤️";
+  //     localStorage.setItem(id, id);
+  //   } else {
+  //     e.target.innerHTML = "♡";
+  //     localStorage.removeItem(id);
+  //   }
+  //   e.stopPropagation();
+  // });
 
   return card;
 }
