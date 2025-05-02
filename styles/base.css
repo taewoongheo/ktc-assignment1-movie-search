@@ -1,0 +1,42 @@
+@import url("reset.css");
+@import url("../components/movie-card/movieCard.css");
+@import url("../components/modal/modal.css");
+
+html {
+  font-size: 18px;
+}
+
+body {
+  padding: 7em 15em;
+}
+
+.title-container {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1em;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.search-section {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#search-input {
+  padding: 0.5em 20em 0.5em 1em;
+}
+
+.search-btn {
+  padding: 0.5em 1em;
+}
+
+#movie-list-section {
+  display: grid;
+  gap: 1.5em;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: auto;
+}

@@ -1,5 +1,9 @@
-import { createContainer, createImgElement, createTextElement } from "./dom.js";
-import { showMovieModal } from "./modal.js";
+import {
+  createContainer,
+  createImgElement,
+  createTextElement,
+} from "../../utils/dom.js";
+import { showMovieModal } from "../modal/modal.js";
 
 export function renderMovieCards($container, movies) {
   $container.innerHTML = "";

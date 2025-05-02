@@ -1,5 +1,5 @@
-import { getAllMovieData } from "./modules/movieAPI.js";
-import { renderMovieCards } from "./modules/movieCards.js";
+import { getAllMovieData } from "./utils/movieAPI.js";
+import { renderMovieCards } from "./components/movie-card/movieCard.js";
 
 const $movieListSection = document.querySelector("#movie-list-section");
 const $searchForm = document.querySelector("#search-form");

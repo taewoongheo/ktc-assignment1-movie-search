@@ -1,5 +1,9 @@
-import { createContainer, createImgElement, createTextElement } from "./dom.js";
-import { getMovieDataById } from "./movieAPI.js";
+import {
+  createContainer,
+  createImgElement,
+  createTextElement,
+} from "../../utils/dom.js";
+import { getMovieDataById } from "../../utils/movieAPI.js";
 
 const $modalContainer = document.querySelector(".modalContainer");
 const $modal = document.querySelector(".modal");

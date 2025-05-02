@@ -1,4 +1,4 @@
-import { TEXT_TAG } from "./constants.js";
+import { TEXT_TAG } from "../constants/constants.js";
 
 export function createTextElement(tag, className, text) {
   if (!TEXT_TAG.includes(tag)) return;
