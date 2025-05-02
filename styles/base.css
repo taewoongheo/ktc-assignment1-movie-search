@@ -40,6 +40,12 @@ body {
   border: none;
 }
 
+.filter-text {
+  font-size: 1rem;
+  color: rgb(207, 207, 207);
+  margin-bottom: 0.5em;
+}
+
 #movie-list-section {
   display: grid;
   gap: 1.5em;
