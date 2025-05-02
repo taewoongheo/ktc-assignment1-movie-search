@@ -21,6 +21,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: rgb(207, 207, 207);
 }
 
 .movie-overview {
@@ -31,6 +32,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: rgb(207, 207, 207);
 }
 
 .movie-rating {
