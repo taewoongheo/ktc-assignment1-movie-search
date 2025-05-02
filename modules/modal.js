@@ -1,38 +1,37 @@
 import { createContainer, createImgElement, createTextElement } from "./dom.js";
 import { getMovieDataById } from "./movieAPI.js";
 
+const $modalContainer = document.querySelector(".modalContainer");
+const $modal = document.querySelector(".modal");
+
+$modalContainer.addEventListener("click", closeModal);
+
 export async function showMovieModal(id) {
-  const { $modalContainer, $modal } = getModalDOM();
-
-  openModal($modalContainer);
-
-  $modalContainer.addEventListener("click", (e) =>
-    closeModal(e, $modalContainer, $modal)
-  );
-
+  $modal.dataset.id = id;
+  openModal();
   const movieData = await getMovieDataById(id);
-
   const { modalInfoContainer, modalTextContainer } =
     buildModalContent(movieData);
-
-  $modal.append(modalInfoContainer, modalTextContainer);
+  $modal.replaceChildren(modalInfoContainer, modalTextContainer);
 }
 
-function getModalDOM() {
-  const $modalContainer = document.querySelector(".modalContainer");
-  const $modal = document.querySelector(".modal");
-  return { $modalContainer, $modal };
-}
-
-function openModal($modalContainer) {
-  $modalContainer.classList.remove("hidden");
-}
-
-function closeModal(e, $modalContainer, $modal) {
-  if (e.target !== e.currentTarget) return;
+function closeModal(e) {
+  if (e.target !== $modalContainer) return;
   $modalContainer.classList.add("hidden");
   $modal.innerHTML = "";
+  if (history.state.modal) history.back();
 }
+
+function openModal() {
+  $modalContainer.classList.remove("hidden");
+  history.pushState({ modal: true }, "", $modal.dataset.id);
+}
+
+window.addEventListener("popstate", (e) => {
+  if (e.state === null) {
+    $modalContainer.classList.add("hidden");
+  }
+});
 
 function buildModalContent({
   title,
