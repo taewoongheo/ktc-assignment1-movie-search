@@ -19,16 +19,16 @@ export async function showMovieModal(id) {
   $modal.replaceChildren(modalInfoContainer, modalTextContainer);
 }
 
+function openModal() {
+  $modalContainer.classList.remove("hidden");
+  history.pushState({ modal: true }, "", $modal.dataset.id);
+}
+
 function closeModal(e) {
   if (e.target !== $modalContainer) return;
   $modalContainer.classList.add("hidden");
   $modal.innerHTML = "";
   if (history.state.modal) history.back();
-}
-
-function openModal() {
-  $modalContainer.classList.remove("hidden");
-  history.pushState({ modal: true }, "", $modal.dataset.id);
 }
 
 window.addEventListener("popstate", (e) => {
@@ -74,19 +74,23 @@ function buildModalContent({
     "modal-rating",
     `평점: ⭐${vote_average.toFixed(1)}`
   );
+
+  const isLiked = localStorage.getItem(id) ? true : false;
   const modalLikeElem = createTextElement(
     "p",
     "modal-like",
-    `좋아요: ${localStorage.getItem(id) ? "❤️" : "♡"}`
+    `좋아요: ${isLiked ? "❤️" : "♡"}`
   );
+  if (isLiked) modalLikeElem.classList.add("liked");
 
   modalLikeElem.addEventListener("click", (e) => {
-    const likeStatus = e.target.innerHTML.split(" ")[1];
-    if (likeStatus === "♡") {
-      e.target.innerHTML = "좋아요: ❤️";
+    const elem = e.target;
+    elem.classList.toggle("liked");
+    if (elem.classList.contains("liked")) {
+      elem.innerHTML = "좋아요: ❤️";
       localStorage.setItem(id, id);
-    } else if (likeStatus === "❤️") {
-      e.target.innerHTML = "좋아요: ♡";
+    } else if (!elem.classList.contains("liked")) {
+      elem.innerHTML = "좋아요: ♡";
       localStorage.removeItem(id);
     }
   });

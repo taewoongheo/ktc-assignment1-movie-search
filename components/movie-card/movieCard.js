@@ -3,7 +3,6 @@ import {
   createImgElement,
   createTextElement,
 } from "../../utils/dom.js";
-import { showMovieModal } from "../modal/modal.js";
 
 export function renderMovieCards($container, movies) {
   $container.innerHTML = "";
@@ -31,28 +30,15 @@ function createMovieCardElement(img, title, desc, rating, id) {
     "movie-rating",
     `⭐${rating.toFixed(1)}`
   );
-  const likeElem = createTextElement(
-    "p",
-    "movie-like",
-    localStorage.getItem(id) ? "❤️" : "♡"
-  );
+
+  const isLiked = localStorage.getItem(id) ? true : false;
+  const likeElem = createTextElement("p", "movie-like", isLiked ? "❤️" : "♡");
+  if (isLiked) likeElem.classList.add("liked");
+
   ratingDiv.append(ratingElem);
   ratingDiv.append(likeElem);
 
   card.append(posterElem, titleElem, descElem, ratingDiv);
-
-  // card.addEventListener("click", () => showMovieModal(id));
-  // likeElem.addEventListener("click", (e) => {
-  //   const likeStatus = e.target.innerHTML;
-  //   if (likeStatus === "♡") {
-  //     e.target.innerHTML = "❤️";
-  //     localStorage.setItem(id, id);
-  //   } else {
-  //     e.target.innerHTML = "♡";
-  //     localStorage.removeItem(id);
-  //   }
-  //   e.stopPropagation();
-  // });
 
   return card;
 }

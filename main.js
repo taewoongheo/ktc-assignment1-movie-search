@@ -46,11 +46,10 @@ $movieListSection.addEventListener("click", (e) => {
 $movieListSection.addEventListener("click", (e) => {
   if (!e.target.classList.contains("movie-like")) return;
 
-  console.log(e.target);
   const id = e.target.closest(".movie-card").dataset.id;
 
-  const likeStatus = e.target.innerHTML;
-  if (likeStatus === "♡") {
+  e.target.classList.toggle("liked");
+  if (e.target.classList.contains("liked")) {
     e.target.innerHTML = "❤️";
     localStorage.setItem(id, id);
   } else {
