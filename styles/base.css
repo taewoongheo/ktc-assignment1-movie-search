@@ -32,6 +32,7 @@ body {
   background-color: rgb(31, 31, 31);
   border-radius: 0.3em;
   border: 0.01em solid rgb(170, 170, 170);
+  color: rgb(207, 207, 207);
 }
 
 .search-btn {
@@ -81,6 +82,7 @@ body {
   }
   #search-input {
     padding: 0.7em 12em 0.7em 1em;
+    color: rgb(207, 207, 207);
   }
   #movie-list-section {
     display: grid;
@@ -104,6 +106,7 @@ body {
   }
   #search-input {
     padding: 0.7em 16em 0.7em 1em;
+    color: rgb(207, 207, 207);
   }
   #movie-list-section {
     display: grid;
