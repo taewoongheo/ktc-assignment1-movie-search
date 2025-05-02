@@ -38,6 +38,7 @@ window.addEventListener("popstate", (e) => {
 });
 
 function buildModalContent({
+  id,
   title,
   genres,
   overview,
@@ -73,12 +74,29 @@ function buildModalContent({
     "modal-rating",
     `평점: ⭐${vote_average.toFixed(1)}`
   );
+  const modalLikeElem = createTextElement(
+    "p",
+    "modal-like",
+    `좋아요: ${localStorage.getItem(id) ? "❤️" : "♡"}`
+  );
+
+  modalLikeElem.addEventListener("click", (e) => {
+    const likeStatus = e.target.innerHTML.split(" ")[1];
+    if (likeStatus === "♡") {
+      e.target.innerHTML = "좋아요: ❤️";
+      localStorage.setItem(id, id);
+    } else if (likeStatus === "❤️") {
+      e.target.innerHTML = "좋아요: ♡";
+      localStorage.removeItem(id);
+    }
+  });
 
   modalDetailsElem.append(
     modalRatingElem,
     modalGenresElem,
     modalRuntimeElem,
-    modalReleaseElem
+    modalReleaseElem,
+    modalLikeElem
   );
   modalInfoContainer.append(modalPosterElem, modalDetailsElem);
 

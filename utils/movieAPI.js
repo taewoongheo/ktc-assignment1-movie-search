@@ -39,6 +39,7 @@ export async function getMovieDataById(id) {
     } = await data.json();
 
     return {
+      id,
       title,
       genres,
       overview,

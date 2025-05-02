@@ -24,17 +24,34 @@ function createMovieCardElement(img, title, desc, rating, id) {
   );
   const titleElem = createTextElement("h1", "movie-title", title);
   const descElem = createTextElement("p", "movie-overview", desc);
-  const ratingDiv = createContainer();
+  const ratingDiv = createContainer("div", "movie-RL-container");
   const ratingElem = createTextElement(
     "span",
     "movie-rating",
     `⭐${rating.toFixed(1)}`
   );
+  const likeElem = createTextElement(
+    "p",
+    "movie-like",
+    localStorage.getItem(id) ? "❤️" : "♡"
+  );
   ratingDiv.append(ratingElem);
+  ratingDiv.append(likeElem);
 
   card.append(posterElem, titleElem, descElem, ratingDiv);
 
   card.addEventListener("click", () => showMovieModal(id));
+  likeElem.addEventListener("click", (e) => {
+    const likeStatus = e.target.innerHTML;
+    if (likeStatus === "♡") {
+      e.target.innerHTML = "❤️";
+      localStorage.setItem(id, id);
+    } else {
+      e.target.innerHTML = "♡";
+      localStorage.removeItem(id);
+    }
+    e.stopPropagation();
+  });
 
   return card;
 }

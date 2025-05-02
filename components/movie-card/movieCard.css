@@ -41,3 +41,14 @@
   padding: 0.1em 0.3em;
   border-radius: 0.3em;
 }
+
+.movie-RL-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie-like {
+  color: white;
+}

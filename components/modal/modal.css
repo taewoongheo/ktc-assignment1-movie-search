@@ -56,7 +56,8 @@
 .modal-genres,
 .modal-release,
 .modal-runtime,
-.modal-rating {
+.modal-rating,
+.modal-like {
   font-size: 1em;
   font-weight: 600;
   margin: 0.5em;
@@ -94,7 +95,7 @@
   .modal-genres,
   .modal-release,
   .modal-runtime,
-  .modal-rating {
+  .modal-rating .modal-like {
     font-size: 0.9em;
     font-weight: 600;
     margin: 0.4em;
@@ -132,7 +133,7 @@
   .modal-genres,
   .modal-release,
   .modal-runtime,
-  .modal-rating {
+  .modal-rating .modal-like {
     font-size: 0.8em;
     font-weight: 600;
     margin: 0.4em;
