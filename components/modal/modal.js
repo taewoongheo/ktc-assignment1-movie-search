@@ -8,7 +8,15 @@ import { getMovieDataById } from "../../utils/movieAPI.js";
 const $modalContainer = document.querySelector(".modalContainer");
 const $modal = document.querySelector(".modal");
 
-$modalContainer.addEventListener("click", closeModal);
+export function bindModalEvents() {
+  window.addEventListener("popstate", (e) => {
+    if (e.state === null) {
+      $modalContainer.classList.add("hidden");
+    }
+  });
+
+  $modalContainer.addEventListener("click", closeModal);
+}
 
 export async function showMovieModal(id) {
   $modal.dataset.id = id;
@@ -30,12 +38,6 @@ function closeModal(e) {
   $modal.innerHTML = "";
   if (history.state.modal) history.back();
 }
-
-window.addEventListener("popstate", (e) => {
-  if (e.state === null) {
-    $modalContainer.classList.add("hidden");
-  }
-});
 
 function buildModalContent({
   id,
