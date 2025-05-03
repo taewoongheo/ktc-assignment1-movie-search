@@ -63,7 +63,6 @@ async function init() {
   for (const movie of (await getAllMovieData()).results) {
     movieData.set(movie.id, movie);
   }
-  console.log(movieData);
   renderMovieCards($movieListSection, movieData);
 }
 
