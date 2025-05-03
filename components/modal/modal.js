@@ -88,9 +88,10 @@ function buildModalContent({
   modalLikeElem.addEventListener("click", (e) => {
     const elem = e.target;
     elem.classList.toggle("liked");
+
     if (elem.classList.contains("liked")) {
       elem.innerHTML = "좋아요: ❤️";
-      localStorage.setItem(id, id);
+      if (!localStorage.getItem(id)) localStorage.setItem(id, id);
     } else if (!elem.classList.contains("liked")) {
       elem.innerHTML = "좋아요: ♡";
       localStorage.removeItem(id);
